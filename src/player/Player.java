@@ -1,10 +1,14 @@
 package player;
 
-import game.Game;
+import java.util.Scanner;
 
 public class Player {
     private String name;
     private String city;
+    private static final char ANSWER_OPTION_B = 'Б';
+    private static final char ANSWER_OPTION_C = 'С';
+    private Scanner scanner = new Scanner(System.in);
+
 
     public Player(String name, String city) {
         this.name = name;
@@ -17,7 +21,7 @@ public class Player {
     public char shoutLetter() {
         while (true) {
             System.out.println("Введите букву: ");
-            char letter = Game.scanner.next().toUpperCase().charAt(0);
+            char letter = scanner.next().toUpperCase().charAt(0);
             if (isRussianLetter(letter)) {
                 System.out.printf("\nИгрок: %s, Буква: %s \n", name, letter);
                 return letter;
@@ -32,7 +36,7 @@ public class Player {
      */
     public String sayWord() {
         System.out.println("Введите слово: ");
-        String word = Game.scanner.nextLine().toUpperCase();
+        String word = scanner.nextLine().toUpperCase();
         System.out.printf("\nИгрок: %s, слово: %s\n", name, word);
         return word;
     }
@@ -53,12 +57,12 @@ public class Player {
         System.out.printf("\nХод игрока: %s, %s\n", name, city);
         while (true) {
             System.out.println("Если хотите букву нажмите 'б' и enter, если хотите слово нажмите 'с' и enter: ");
-            char actionSelection = Game.scanner.nextLine().toUpperCase().charAt(0);
+            char actionSelection = scanner.nextLine().toUpperCase().charAt(0);
             switch (actionSelection) {
-                case 'Б' -> {
+                case ANSWER_OPTION_B -> {
                     return new PlayerAnswer(true, shoutLetter());
                 }
-                case 'С' -> {
+                case ANSWER_OPTION_C -> {
                     return new PlayerAnswer(false, sayWord());
                 }
                 default -> System.out.println("Некорректное значение, введите 'б' или 'с'");

@@ -1,5 +1,3 @@
-package game;
-
 public class Tableau {
     private String answer;
     private char[] lettersScoreboard;

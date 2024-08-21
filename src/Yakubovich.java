@@ -1,6 +1,3 @@
-package game;
-
-import game.Game;
 import player.Player;
 import player.PlayerAnswer;
 
